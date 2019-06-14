@@ -18,7 +18,7 @@ func _on_unirse_pressed():
 	_load_game()
 
 func _load_game():
-	get_tree().change_scene('res://Game.tscn')
+	get_tree().change_scene('res://juego.tscn')
 
 
 

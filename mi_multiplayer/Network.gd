@@ -5,7 +5,8 @@ const DEFAULT_PORT = 31400
 const MAX_PLAYERS = 5
 
 var players = { }
-var self_data = { name = '', position = Vector2(360, 180) }
+# aqui tambien he cambiado la posicion de un vector 2 a 3
+var self_data = { name = '', position = Vector3(0, 0, 0) }
 
 signal player_disconnected
 signal server_disconnected
@@ -54,10 +55,10 @@ remote func _request_players(request_from_id):
 
 remote func _send_player_info(id, info):
 	players[id] = info
-	var new_player = load('res://player/Player.tscn').instance()
+	var new_player = load('res://jugadores/Jugador.tscn').instance()
 	new_player.name = str(id)
 	new_player.set_network_master(id)
-	$'/root/Game/'.add_child(new_player)
+	$'/root/Juego/'.add_child(new_player)
 	new_player.init(info.name, info.position, true)
 
 func update_position(id, position):
